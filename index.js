@@ -1,7 +1,7 @@
 var http = require('http');
-var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
+var path = require('path');
 
 var port = process.env.PORT || 8080;
 
@@ -11,30 +11,18 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     console.log('GET="/"');
-    fs.readFile("./index.html", "UTF-8", function (err, html) {
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.write(html);
-      res.end();
-    });  
+    res.sendFile(path.join(__dirname + '/principal.html'));
 });
 
 app.post('/add', function (req, res) {
     console.log('POST="/add"');
     console.log(req.body)
-    fs.readFile("./index.html", "UTF-8", function (err, html) {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(html);
-        res.end();
-      });
+    res.sendFile(path.join(__dirname + '/principal.html'));
 });
 
 app.post('/list', function (req, res) {
   console.log('GET="/list"');
-  fs.readFile("./index.html", "UTF-8", function (err, html) {
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.write(html);
-      res.end();
-    });
+  res.sendFile(path.join(__dirname + '/principal.html'));
 });
 
 http.createServer(app).listen(port);
