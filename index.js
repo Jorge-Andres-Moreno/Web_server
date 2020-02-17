@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 var mysql = require('mysql');
-
+/*
 var con = mysql.createConnection({
   host: "192.168.149.147",
   user: "root",
@@ -34,7 +34,7 @@ con.connect(function (err) {
     console.log("Table created");
   });
 });
-
+*/
 app.get('/', function (req, res) {
   console.log('GET="/"');
   res.sendFile(path.join(__dirname + '/principal.html'));
